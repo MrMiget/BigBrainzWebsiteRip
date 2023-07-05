@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./ext/resources/css/ext-all.css" />
+        <script type="text/javascript" src="./ajax.js"></script>
+        <script type="text/javascript" src="./ext/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="./ext/ext-all.js"></script>        
+        <title>Activation Access</title>
+    </head>
+    <body>
+        <div id = "search">
+            <input type="text" id = "Term" /> <button onclick = "search()">Search</button><br />
+            <input type="radio" id = "both" name = "options" checked="checked"/> Both<br />
+            <input type="radio" id = "ordID" name = "options" /> Order Number<br />
+            <input type="radio" id = "ordEmail" name = "options" /> Order Email<br />
+            <button onclick = "GetRegistrations()">Get Registrations</button><br />
+            <button onclick = "AddActivation()">Add</button><br />
+        </div>
+        <div id = "main"> </div>
+    </body>
+</html>
