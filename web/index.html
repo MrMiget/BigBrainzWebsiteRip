@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Big Brainz</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/bbslider.js"></script>
+    <script src="TemplateData/bbfader.js"></script>
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="TemplateData/logger.js"></script>
+</head>
+<body class="template">
+<p class="header"><span>Unity WebGL Player | </span>Big Brainz</p>
+<div class="slider">
+    <div id="bb-slider"></div>
+</div>
+<div class="template-wrap clear">
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="480px" width="640px"></canvas>
+    <br>
+    <div>
+        <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen"
+                                     title="Fullscreen" onclick="SetFullscreen(1);"/></div>
+        <div id="gauge-wrapper">
+            <div id="mbps"></div>
+            <div class = 'speed'></div>
+            <div class = 'hider'></div>
+        </div>
+    </div>
+</div>
+<div id = 'cache-message'>
+    <p>
+        It looks like you need to recache.  Please push the button below.
+    </p>
+    <button onclick="clearCache()">ReCache</button>
+</div>
+<img src = 'imgs/il_logo.png' class="il-logo" />
+<img src = 'imgs/BigBrainzLogo_85.png' class="bb-logo" />
+<script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: function(err, url, line) {window.logMe('ERROR', '[' + err +']', {AssetTag:'JSCore'}); return false;},			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "Release/web.data",
+    codeUrl: "Release/web.js",
+    memUrl: "Release/web.mem",
+    
+  };
+</script>
+<script src="Release/UnityLoader.js"></script>
+
+<script type='text/javascript'>
+	var QueryString = function () {
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if (typeof query_string[pair[0]] === "undefined") {
+                query_string[pair[0]] = decodeURIComponent(pair[1]);
+            } else if (typeof query_string[pair[0]] === "string") {
+                var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+                query_string[pair[0]] = arr;
+            } else {
+                query_string[pair[0]].push(decodeURIComponent(pair[1]));
+            }
+        }
+        return query_string;
+    }();
+</script>
+</body>
+</html>

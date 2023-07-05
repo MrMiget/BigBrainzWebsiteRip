@@ -1,0 +1,11 @@
+# /robtots.txt
+
+#[the name of the robot the following rule applies to]
+#no exclusion at all
+User-agent: *
+
+#[the URL path you want to block]
+Disallow: 
+
+#[the URL path in of a subdirectory, within a blocked parent directory, that you want to unblock]
+Allow: 
