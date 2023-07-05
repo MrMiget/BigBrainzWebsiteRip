@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-xlabs-extension="1" data-xlabs-extension-ready="1" data-xlabs-extension-version="2.6.1">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login | Imagine Learning</title>
+    <style type="text/css">
+    </style>
+    <style type="text/css">#xLabsCanvas {
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        position: fixed;
+        z-index: 2147483646;
+    }
+
+    #xLabsCanvas.allow-pointer {
+        pointer-events: auto;
+    }</style>
+    <script type="application/javascript" src="./jquery.min.js"></script>
+    <script type="application/javascript" src="./jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="application/javascript" src="./imf_login.js"></script>
+</head>
+<body>
+<div id="root">
+    <div data-reactroot="" class="outerwrapper background-6">
+        <div class="login-content">
+            <div class="row">
+                <div class="medium-centered medium-10 columns">
+                    <div class="row">
+                        <div class="medium-5 columns">
+                            <div class="login-card card">
+                                <div class="card-section">
+                                    <div class="Header row">
+                                        <div class="column logo">
+                                        </div>
+                                    </div>
+                                    <form class="login-form">
+                                        <div class="row column">
+                                            <label class="">Username<a href="#" title=""><i id = "username-help-question" class="icon icon-question"></i></a>
+                                                <p id = 'username-help' class = 'help-text-hidden'>This is the username that your teacher set for you.  If you are a teacher trying to log in to the teacher's portal, your username is 'school' and your password is the unique password that was set for your school.  If you are unable to find your login info please text: 866-457-8776 or chat: <a href="https://help.imaginelearning.com">help.ImagineLearning.com</a>, or call 866-457-8776.</p>
+                                                <input id="input-username" type="text" value="" placeholder="Username" class="">
+                                            </label>
+                                        </div>
+                                        <div class="row column">
+                                            <label class="">
+                                                <span class="float-left">Password</span>
+                                                <a id = 'show-btn' class="float-right input-button-transparent">
+                                                    <i class="icon icon-eye">
+                                                    </i>&nbsp;Show
+                                                </a>
+                                                <input id="input-password" type="password" class="" value=""
+                                                       placeholder="Password">
+                                            </label>
+                                        </div>
+                                        <div class="row column">
+                                            <label class="">Site Code<a href="#" title=""><i id = "sitecode-help-question" class="icon icon-question"></i></a></label>
+                                            <p id = 'sitecode-help' class = 'help-text-hidden'>You can find your district site code here: <a href="https://nces.ed.gov/ccd/districtsearch/">https://nces.ed.gov/ccd/districtsearch/</a>, but, if you are unable to find your district site code please text: 866-457-8776 or chat: <a href="https://help.imaginelearning.com">help.ImagineLearning.com</a>, or call 866-457-8776.</p>
+                                            <div id = 'decided-site-code'>
+                                                <div class="input-group">
+                                                    <span id = 'decided-site-code-value' class="input-group-field"></span>
+                                                    <div class="input-group-button">
+                                                        <button id = 'edit-site-code' type="button" class="button edit-sitecode">
+                                                            <i class="icon icon-pencil"></i><span>Edit</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id = 'undecided-site-code'>
+                                                <div class="input-group">
+                                                    <!--<label class="">Site Code<i class="icon icon-question"></i>-->
+                                                        <input id="input-sitecode" type="text" value="alex" placeholder="Site Code" class="">
+                                                    </label>
+                                                    <div class="input-group-button">
+                                                        <button id = 'save-site-code'  type="button" class="button edit-sitecode">
+                                                            <i class="icon icon-pencil"></i><span>Save</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row column">
+                                            <input id = 'submit-btn' type="submit" class="button primary math-facts" value="Log In">
+                                        </div>
+                                    </form>
+                                    <hr>
+                                    <div class="card-footer-links">
+                                        <a href = "https://imaginelearning.com/privacy">Privacy Policy</a><span>&nbsp;|&nbsp;</span>
+                                        <a href = "https://imaginelearning.com/eula">End User License Agreement</a>
+                                        <br>
+                                        <span>© 2020 Imagine Learning, Inc. All Rights Reserved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <img src="./Login _ Imagine Learning_files/scratch_transparent_background.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-footer math-facts">
+            </div>
+            <div id="admin-dlg" title="Select School">
+                <select id = 'options' />
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

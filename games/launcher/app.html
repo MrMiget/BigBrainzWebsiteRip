@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<!-- Auto Generated with Sencha Architect -->
+<!-- Modifications to this file will be overwritten. -->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>launcher</title>
+  
+</head>
+<body>
+	<table id = "progressTable" width = "100%">
+		<tr><td>&nbsp;</td><td style='text-align:center' valign='bottom' id = 'loadingTD'>Loading script files</td><td>&nbsp;</td></tr>
+		<tr>
+			<td style="width:10%">&nbsp;</td>
+			<td style="width:80%" valign='top'>
+				<progress id = "progress" value="0" max="100" style = 'width:100%;'>
+					<div style = 'margin:20px;width:auto;border: 1px solod #ccc;padding:2px;'>
+						<div id = 'progressFallback' style = 'width:0%;background:blue;height:20px;'>&nbsp;</div>
+					</div>					
+				</progress> 
+			</td>
+			<td style="width:10%">&nbsp;</td>
+		</tr>
+	</table>	
+<script>	
+	var percent = 0;
+	document.getElementById('progressTable').setAttribute('height',screen.availHeight);
+	function loadFromCDN() {
+		//emitScriptTag("https://extjs.cachefly.net/ext-4.2.0-commercial/ext-all.js");
+		//emitLinkTag("https://extjs.cachefly.net/ext-4.2.0-commercial/resources/ext-theme-classic/ext-theme-classic-all.css");
+		emitScriptTag("https://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js");
+		emitLinkTag("https://cdn.sencha.com/ext/gpl/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css");
+		
+		setTimeout(function() { loadBigBrainzScripts(20, 5); }, 500);
+	}
+	function loadFromBigBrainz() {
+		//emitScriptTag("http://bigbrainz.com/extjs/ext-all-debug.js");		
+		emitScriptTag("/extjs/ext-all.js");
+		emitLinkTag("/extjs/ext-theme-classic-all.css");
+		setTimeout(function() { loadBigBrainzScripts(40, 2.5); }, 500);
+	}
+	function loadBigBrainzScripts(attempts, step) {
+		if (typeof(Ext) === "undefined") {
+			if (attempts > 0) {
+				setTimeout(function(){loadBigBrainzScripts(--attempts, step);}, 500);				
+				percent += step;
+				document.getElementById('progress').value = percent;
+				document.getElementById('progressFallback').value = percent;
+				document.getElementById('progressFallback').style.width = percent + '%';
+				return;
+			} else {
+				if (loadFromBigBrainzServer === "true") {
+					alert('Could not load Javascript files.  Is there a filter on your system?');
+				} else  {
+					setCookie("loadFromBigBrainz", "true", 7);
+					location.reload(); 
+				}
+				
+			}
+		} 
+		var element = document.getElementById("progressTable");
+		element.parentNode.removeChild(element);
+		emitScriptTag("/games/launcher/routes/scripts.js");
+		emitScriptTag("/games/launcher/routes/md5-min.js");
+		emitScriptTag("/games/launcher/routes/extjs/gridcharts.js");
+		emitLinkTag("/games/launcher/routes/styles.css");
+		emitLinkTag("/tmp2/launcher-devel-git/routes/print.css");
+		//emitScriptTag("app.js");
+		emitScriptTag("app-all.js");
+	}
+	function emitScriptTag(src) {
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = src;
+		document.body.appendChild(script);			
+	}
+	function emitLinkTag(src) {
+		var css = document.createElement("link");
+		css.rel = "stylesheet";
+		css.href = src;
+		document.body.appendChild(css);			
+	}
+	function setCookie(c_name, value, exdays) {
+		var exdate = new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+		document.cookie = c_name + "=" + c_value;
+	}
+
+	function getCookie(c_name) {
+		var i, x, y, ARRcookies = document.cookie.split(";");
+		for (i = 0; i < ARRcookies.length; i++) {
+			x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+			y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+			x = x.replace(/^\s+|\s+$/g, "");
+			if (x == c_name) {
+				return unescape(y);
+			}
+		}
+	}
+	var loadFromBigBrainzServer = getCookie("loadFromBigBrainz");	
+	if (loadFromBigBrainzServer === "true") {
+		document.getElementById('loadingTD').innerHTML = 'Loading Big Brainz';
+		loadFromBigBrainz();
+	} else {
+		loadFromCDN();
+	}
+</script>
+</body>
+</html>

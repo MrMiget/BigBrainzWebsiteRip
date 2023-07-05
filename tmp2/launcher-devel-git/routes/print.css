@@ -1,0 +1,20 @@
+@media screen {
+	.noScreen{display:none;}
+}
+@media print {
+	.noScreen{}
+  @page {size: landscape}
+  body * {
+    visibility: hidden;
+  }
+  .printer, .printer * {
+    visibility: visible;
+  }
+  .printer {
+		width:511pt;
+    overflow: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
